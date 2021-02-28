@@ -1,2 +1,2 @@
 # hyper-servers
-Hyper Connection Manager
+Hyper Connection Manager plugin
