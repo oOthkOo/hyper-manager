@@ -2,19 +2,15 @@
   <img src="https://github.com/oOthkOo/hyper-manager/blob/main/pictures/putnspY.png" alt="hyper-manager"/>
 </p>
 
-<p align="center">hyper-manager</p>
-========================
+hyper-manager
+-----
 
 <p align="center">The ultimate and most complete extension to manage all your connections in one place for <a href="https://hyper.is/">Hyper.js</a>.</p>
-
-<p align="center">
 
 [![Stars](https://img.shields.io/github/stars/oOthkOo/hyper-manager.svg?style=for-the-badge)](https://github.com/oOthkOo/hyper-manager)
 [![Latest Stable Version](https://img.shields.io/npm/v/hyper-manager.svg?style=for-the-badge)](https://www.npmjs.com/package/hyper-manager)
 [![NPM Downloads](https://img.shields.io/npm/dt/hyper-manager.svg?style=for-the-badge)](https://www.npmjs.com/package/hyper-manager)
 [![NPM Downloads](https://img.shields.io/npm/dm/hyper-manager.svg?style=for-the-badge)](https://www.npmjs.com/package/hyper-manager)
-
-</p>
 
 ![Screncast 001](https://github.com/oOthkOo/hyper-manager/blob/main/screencasts/screencast-001.gif)
 
@@ -46,7 +42,7 @@ Run this command in your terminal:
 
  To install, edit `~/.hyper.js` and add `"hyper-manager"` to `plugins`:
 
- ```json
+ ```js
  plugins: [
    "hyper-manager",
    // other plugins...
@@ -158,7 +154,7 @@ Donations
 
 :heart: Donations are always welcome :heart:.
 
-Coins | Addresses
---- | ---
-<img src="https://github.com/oOthkOo/hyper-manager/blob/main/pictures/btc.svg" alt="Bitcoin"/> BTC | 3B52fbzNFQTaKZxWf5GrCUsASD2UP8na4A
-<img src="https://github.com/oOthkOo/hyper-manager/blob/main/pictures/etc.svg" alt="Ethereum"/> ETH | 0x1C389f1f85Cdb3C2996b83fAc87E496A80698B7C
+Coins | Symbols | Addresses
+--- | --- | ---
+<img src="https://github.com/oOthkOo/hyper-manager/blob/main/pictures/btc.svg" alt="Bitcoin"/> | BTC | 3B52fbzNFQTaKZxWf5GrCUsASD2UP8na4A
+<img src="https://github.com/oOthkOo/hyper-manager/blob/main/pictures/eth.svg" alt="Ethereum"/> | ETH | 0x1C389f1f85Cdb3C2996b83fAc87E496A80698B7C
