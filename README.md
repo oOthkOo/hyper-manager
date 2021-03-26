@@ -1,16 +1,19 @@
-<p align="center">
+<p align="center" style="margin-bottom: 0px !important;">
   <img src="https://github.com/oOthkOo/hyper-manager/blob/main/pictures/putnspY.png" alt="hyper-manager"/>
 </p>
 
-hyper-manager
------
+<h1 align="center" style="margin-top: 0px;">hyper-manager</h1>
 
 <p align="center">The ultimate and most complete extension to manage all your connections in one place for <a href="https://hyper.is/">Hyper.js</a>.</p>
 
+<div align="center">
+  
 [![Stars](https://img.shields.io/github/stars/oOthkOo/hyper-manager.svg?style=for-the-badge)](https://github.com/oOthkOo/hyper-manager)
 [![Latest Stable Version](https://img.shields.io/npm/v/hyper-manager.svg?style=for-the-badge)](https://www.npmjs.com/package/hyper-manager)
 [![NPM Downloads](https://img.shields.io/npm/dt/hyper-manager.svg?style=for-the-badge)](https://www.npmjs.com/package/hyper-manager)
 [![NPM Downloads](https://img.shields.io/npm/dm/hyper-manager.svg?style=for-the-badge)](https://www.npmjs.com/package/hyper-manager)
+
+</div>
 
 ![Screncast 001](https://github.com/oOthkOo/hyper-manager/blob/main/screencasts/screencast-001.gif)
 
