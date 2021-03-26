@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "labels": {
+    "openAll": "Open all",
+    "parameters": "Parameters...",
+
+    "add": "Add",
+    "duplicate": "Duplicate",
+    "modify": "Modify",
+    "delete": "Delete",
+    "ok": "Ok",
+    "cancel": "Cancel",
+    "save": "Save",
+
+    "restartTitle": "Restart Hyper.js",
+    "restartText": "You must restart Hyper.js to apply changes.",
+
+    "id": "ID",
+    "name": "Name",
+    "legend": "Legend",
+    "user": "User",
+    "group": "Group",
+    "accelerator": "Accelerator",
+    "host": "Host",
+    "type": "Type",
+    "port": "Port",
+    "sshKey": "SSH Key",
+    "custom": "Custom",
+    "customArguments": "Custom arguments",
+    "launch": "Launch",
+    "launchActiveTerm": "Active Term",
+    "launchNewTab": "New Tab",
+    "launchSplitHorizontally": "Split Horizontally",
+    "launchSplitVertically": "Split Vertically",
+
+    "groupLegend": "You have #count# group(s).",
+    "connectionLegend": "You have #count# connection(s).",
+
+    "newGroup": "New group",
+    "modifyGroup": "Modify group",
+    "newConnection": "New connection",
+    "modifyConnection": "Modify connection",
+
+    "confirmation": "Confirmation",
+    "deleteGroupConfirm": "Are you sure you want to delete this group (#name#)?",
+    "deleteGroupsConfirm": "Are you sure you want to delete #count# groups?",
+    "deleteConnectionConfirm": "Are you sure you want to delete this connection (#name#)?",
+    "deleteConnectionsConfirm": "Are you sure you want to delete #count# connections?"
+  },
+  "groups": [],
+  "servers": []
+}

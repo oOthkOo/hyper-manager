@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "labels": {
+    "openAll": "Tout ouvrir",
+    "parameters": "Parametres...",
+
+    "add": "Ajouter",
+    "duplicate": "Dupliquer",
+    "modify": "Modifier",
+    "delete": "Supprimer",
+    "cancel": "Annuler",
+    "save": "Sauvegarder",
+
+    "id": "ID",
+    "name": "Nom",
+    "legend": "Legende",
+    "user": "Utilisateur",
+    "group": "Groupe",
+    "accelerator": "Clavier",
+    "host": "Domaine",
+    "type": "Type",
+    "port": "Port",
+    "sshKey": "Clef SSH",
+    "custom": "Custom",
+    "customArguments": "Arguments",
+    "launch": "Launch",
+    "launchActiveTerm": "Active Term",
+    "launchNewTab": "New Tab",
+    "launchSplitHorizontally": "Split Horizontally",
+    "launchSplitVertically": "Split Vertically",
+
+    "groupLegend": "Vous avez #count# groupe(s).",
+    "connectionLegend": "Vous avez #count# connexion(s).",
+
+    "newGroup": "Nouveau groupe",
+    "modifyGroup": "Modifier le groupe",
+    "newConnection": "Nouvelle connexion",
+    "modifyConnection": "Modifier la connexion",
+
+    "confirmation": "Confirmation",
+    "deleteGroupConfirm": "Etes vous sur de vouloir supprimer ce groupe (#name#) ?",
+    "deleteGroupsConfirm": "Etes vous sur de vouloir supprimer ces #count# groupes ?",
+    "deleteConnectionConfirm": "Etes vous sur de vouloir supprimer cette connexion (#name#) ?",
+    "deleteConnectionsConfirm": "Etes vous sur de vouloir supprimer ces #count# connexions ?"
+  },
+  "groups": [],
+  "servers": []
+}
