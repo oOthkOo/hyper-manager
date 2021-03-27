@@ -54,7 +54,8 @@
       "name": "htop",
       "launch": "active-term",
       "type": "cli",
-      "id": "b96b6193"
+      "id": "b96b6193",
+      "custom": "htop"
     }
   ]
 }
