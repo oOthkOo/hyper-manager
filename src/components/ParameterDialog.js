@@ -46,7 +46,6 @@ class ParameterDialog extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    console.log("ParameterDialog:getDerivedStateFromProps")
     return {
       open: props.open,
       options: props.options
@@ -54,22 +53,8 @@ class ParameterDialog extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    /*console.log('ParameterDialog:shouldComponentUpdate:nextProps', nextProps)
-    console.log('ParameterDialog:shouldComponentUpdate:nextState', nextState)
-    if (!_.isEqual(nextProps.options, this.state.options)) {
-      return true
-    }
-    return this.state.open != nextProps.open
-*/
     return true
   }
-
-  /*getDerivedStateFromProps(props, state) {
-    console.log('getDerivedStateFromProps')
-    this.setState({
-      open: props.open
-    })
-  }*/
 
   close() {
     this.props.onCancel()

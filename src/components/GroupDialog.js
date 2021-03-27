@@ -28,7 +28,6 @@ class GroupDialog extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    console.log("GroupDialog:getDerivedStateFromProps")
     return {
       mode: props.mode,
       group: props.group,
@@ -37,12 +36,7 @@ class GroupDialog extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    /*console.log('GroupDialog:shouldComponentUpdate:nextProps', nextProps)
-    console.log('GroupDialog:shouldComponentUpdate:nextState', nextState)
-    if (!_.isEqual(this.state.group, nextProps.group)) {
-      return true
-    }*/
-    return true//this.state.open != nextProps.open
+    return true
   }
 
   close() {

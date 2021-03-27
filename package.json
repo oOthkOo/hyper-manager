@@ -1,6 +1,6 @@
 {
   "name": "hyper-manager",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Hyper.js Manager",
   "main": "./index.js",
   "scripts": {

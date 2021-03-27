@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
@@ -43,7 +43,6 @@ class ServerDialog extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    //console.log("ServerDialog:getDerivedStateFromProps")
     return {
       mode: props.mode,
       options: props.options,
@@ -54,12 +53,6 @@ class ServerDialog extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    //console.log('ServerDialog:shouldComponentUpdate:nextProps', nextProps)
-    //console.log('ServerDialog:shouldComponentUpdate:nextState', nextState)
-    /*if (!_.isEqual(this.state.server, nextProps.server)) {
-      return true
-    }
-    return this.state.open != nextProps.open*/
     return true
   }
 

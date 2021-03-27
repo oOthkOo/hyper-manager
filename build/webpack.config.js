@@ -51,13 +51,17 @@ export default {
     ],
   },
 
-  externals : {
-    react: 'react',
-    reactDom: 'react-dom'
-  },
+  /*externals: {
+    'react': 'react',
+    'react-dom': 'react-dom',
+  },*/
 
   resolve: {
     extensions: ['.webpack.js', '.web.js', '.js', '.jsx', '.json'],
+    alias: {
+        'react': resolvePath(__dirname, '../node_modules/react'),
+        'react-dom': resolvePath(__dirname, '../node_modules/react-dom')
+    }
   },
 
   cache: DEBUG,
