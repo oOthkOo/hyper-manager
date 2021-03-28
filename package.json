@@ -1,7 +1,6 @@
 {
   "name": "hyper-manager",
-  "version": "1.0.4",
-  "description": "Hyper.js Manager",
+  "version": "1.0.5",
   "main": "./index.js",
   "scripts": {
     "start": "npm run build -- --watch --release",
@@ -12,6 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/oOthkOo/hyper-manager.git"
   },
+  "description": "The ultimate and most complete extension to manage all your connections in one place for Hyper.js",
   "keywords": [
     "hyper",
     "hyperjs",
