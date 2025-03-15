@@ -1,0 +1,15 @@
+{
+    "locale": "en-US",
+    "groups": [
+        { "name": "Example", "id": "4152bc45" }
+    ],
+    "servers": [
+        {
+            "groupId": "4152bc45",
+            "name": "htop",
+            "launch": "active-term",
+            "type": "cli",
+            "id": "b96b6193"
+        }
+    ]
+}

@@ -1,12 +1,10 @@
 {
-  "version": "1.0.0",
-  "labels": {
     "openAll": "Abre todo",
     "parameters": "parámetros...",
 
     "add": "Agregar",
     "duplicate": "Duplicar",
-    "modify": "Modificar",
+    "edit": "Modificar",
     "delete": "Eliminar",
     "ok": "Ok",
     "cancel": "Cancelar",
@@ -35,18 +33,16 @@
 
     "groupLegend": "Tienes #count# grupo(s).",
     "connectionLegend": "Tienes #count# conexión(s).",
+    "connectionGroupLegend": "Grupo (#group#) tienes #count# conexión(s).",
 
     "newGroup": "Nuevo grupo",
-    "modifyGroup": "Modificar grupo",
+    "editGroup": "Modificar grupo",
     "newConnection": "Nueva conexión",
-    "modifyConnection": "Modificar conexión",
+    "editConnection": "Modificar conexión",
 
     "confirmation": "Confirmación",
     "deleteGroupConfirm": "¿Estás seguro de que quieres eliminar este grupo? (#name#)?",
     "deleteGroupsConfirm": "¿Estás seguro de que quieres eliminar #count# grupos?",
     "deleteConnectionConfirm": "¿Estás seguro de que quieres eliminar esta conexión? (#name#)?",
     "deleteConnectionsConfirm": "¿Está seguro de que desea eliminar #count# conexiones?"
-  },
-  "groups": [],
-  "servers": []
 }

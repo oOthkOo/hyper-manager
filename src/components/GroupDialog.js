@@ -82,7 +82,7 @@ class GroupDialog extends Component {
 
   getTitle() {
     const { mode } = this.state
-    const name = mode == Modes.Add || mode == Modes.Duplicate ? 'newGroup' : 'modifyGroup'
+    const name = mode == Modes.Add || mode == Modes.Duplicate ? 'newGroup' : 'editGroup'
     return this.getLabel(name)
   }
 

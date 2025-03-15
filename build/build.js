@@ -4,13 +4,15 @@ import { WATCH } from './flags'
 
 const compiler = webpack(webpackConfig)
 const done = (error, stats) => {
-  if (error) throw error
-  console.log(stats.toString(webpackConfig.stats))
+    if (error) {
+        throw error
+    }
+    console.log(stats.toString(webpackConfig.stats))
 }
 
 if (WATCH) {
-  compiler.watch({}, done)
+    compiler.watch({}, done)
 }
 else {
-  compiler.run(done)
+    compiler.run(done)
 }

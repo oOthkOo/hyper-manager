@@ -72,13 +72,6 @@ class ParameterDialog extends Component {
     this.close()
   }
 
-  getLabel(name) {
-    if (!this.manager) {
-      return ''
-    }
-    return this.manager.getLabel(name)
-  }
-
   getGroups() {
     return this.state.options.groups || []
   }
@@ -148,8 +141,22 @@ class ParameterDialog extends Component {
     this.props.onGroupDelete(groupIds)
   }
 
-  getConnections() {
+  getServers() {
     return _.get(this.state, 'options.servers', [])
+  }
+
+  getGroupConnections(groupId) {
+    return _.filter(this.getServers(), (server) => {
+        return server.groupId == groupId
+    })
+  }
+
+  getConnections() {
+    if (this.getGroupSelectionCount() == 1) {
+        const groupSelected = this.getGroupIdSelected()
+        return this.getGroupConnections(groupSelected)
+    }
+    return this.getServers()
   }
 
   getConnectionById(connectionId) {
@@ -221,7 +228,7 @@ class ParameterDialog extends Component {
     return _.get(this.state, 'groupSelections.length', 0)
   }
 
-  isModifyGroupBtnDisabled() {
+  isEditGroupBtnDisabled() {
     return this.getGroupSelectionCount() != 1
   }
 
@@ -258,39 +265,69 @@ class ParameterDialog extends Component {
     return `HyperManager (v${version})`
   }
 
-  render() {
-    const styles = {
-      actionBar: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        margin: '10px 0px 10px 0px'
-      },
-      addGroupBtn: {
-        margin: '0px 10px 0px 0px'
-      },
-      duplicateGroupBtn: {
-        margin: '0px 10px 0px 0px'
-      },
-      modifyGroupBtn: {
-        margin: '0px 10px 0px 0px'
-      },
-      deleteGroupBtn: {
-
-      },
-      addServerBtn: {
-        margin: '0px 10px 0px 0px'
-      },
-      duplicateConnectionBtn: {
-        margin: '0px 10px 0px 0px'
-      },
-      modifyServerBtn: {
-        margin: '0px 10px 0px 0px'
-      },
-      deleteServerBtn: {
-
-      }
+  getConnectionLegend() {
+    let servers = this.getConnections()
+    const groupSelectedCount = this.getGroupSelectionCount()
+    if (groupSelectedCount == 1) {
+        const groupSelected = this.getGroupById(this.getGroupIdSelected())
+        return this.getLabel('connectionGroupLegend', {
+            group: _.get(groupSelected, 'name', ''),
+            count: servers.length
+        })
     }
+    return this.getLabel('connectionLegend', {
+        count: servers.length
+    })
+  }
+
+    render() {
+        const styles = {
+            paramContent: {
+                display: 'flex',
+                height: '600px'
+            },
+            groupContent: {
+                maxWidth: '400px',
+                height: '500px',
+                flexGrow: 1,
+                marginRight: '10px'
+            },
+            connectionContent: {
+                height: '500px',
+                flexGrow: 1,
+                marginLeft: '10px'
+            },
+            actionBar: {
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'flex-end',
+                margin: '10px 0px 10px 0px'
+            },
+            addGroupBtn: {
+                margin: '0px 10px 0px 0px'
+            },
+            duplicateGroupBtn: {
+                margin: '0px 10px 0px 0px'
+            },
+            editGroupBtn: {
+                margin: '0px 10px 0px 0px'
+            },
+            deleteGroupBtn: {
+
+            },
+            addServerBtn: {
+                margin: '0px 10px 0px 0px'
+            },
+            duplicateConnectionBtn: {
+                margin: '0px 10px 0px 0px'
+            },
+            editServerBtn: {
+                margin: '0px 10px 0px 0px'
+            },
+            deleteServerBtn: {
+
+            }
+        }
 
     const {
       open,
@@ -300,20 +337,20 @@ class ParameterDialog extends Component {
     } = this.state
 
     const groupColumns = [
-      { field: 'id', headerName: this.getLabel('id'), width: 130 },
+      //{ field: 'id', headerName: this.getLabel('id'), width: 130 },
       { field: 'name', headerName: this.getLabel('name'), width: 200 },
-      { field: 'legend', headerName: this.getLabel('legend'), flex: 1 }
+      { field: 'legend', headerName: this.getLabel('legend'), width: 50 }
     ]
     const serverColumns = [
-      { field: 'id', headerName: this.getLabel('id'), width: 130 },
+      //{ field: 'id', headerName: this.getLabel('id'), width: 130 },
       { field: 'group', headerName: this.getLabel('group'), width: 100,
       valueGetter: (params) => {
         const groupId = _.get(params, 'row.groupId', '')
         const group = this.getGroupById(groupId)
         return _.get(group, 'name', '-')
       } },
-      { field: 'name', headerName: this.getLabel('name'), flex: 1 },
-      { field: 'legend', headerName: this.getLabel('legend'), flex: 1 },
+      { field: 'name', headerName: this.getLabel('name'), width: 200 },
+      { field: 'legend', headerName: this.getLabel('legend'), width: 150 },
       { field: 'accelerator', headerName: this.getLabel('accelerator'), width: 130 },
       { field: 'host', headerName: this.getLabel('host'), width: 150 },
       { field: 'type', headerName: this.getLabel('type'), width: 90 },
@@ -388,91 +425,93 @@ class ParameterDialog extends Component {
           fullWidth
           maxWidth={false}
         >
-          <DialogTitle id="form-dialog-title">{this.getTitle()}</DialogTitle>
-          <DialogContent>
-            <DialogContentText style={{ marginTop: '5px' }}>
-              {this.getLabel('groupLegend', {count: groups.length})}
-            </DialogContentText>
-            <div style={{ width: '100%', height: 200 }}>
-              <DataGrid
-                columns={groupColumns}
-                rows={groups}
-                rowHeight={40}
-                checkboxSelection
-                hideFooter
-                onSelectionModelChange={this.onGroupSelectionChange}
-              />
-            </div>
-            <div style={styles.actionBar}>
-              <Button
-                style={styles.addGroupBtn}
-                color="primary"
-                onClick={this.onAddGroupBtnClick}
-              >{this.getLabel('add')}</Button>
-              <Button
-                disabled={this.isModifyGroupBtnDisabled()}
-                style={styles.duplicateGroupBtn}
-                onClick={this.onDuplicateGroupBtnClick}
-              >{this.getLabel('duplicate')}</Button>
-              <Button
-                disabled={this.isModifyGroupBtnDisabled()}
-                style={styles.modifyGroupBtn}
-                onClick={this.onModifyGroupBtnClick}
-              >{this.getLabel('modify')}</Button>
-              <Button
-                disabled={this.isDeleteGroupBtnDisabled()}
-                style={styles.deleteGroupBtn}
-                color="secondary"
-                onClick={this.onDeleteGroupBtnClick}
-              >{this.getLabel('delete')}</Button>
-            </div>
-            <DialogContentText>
-              {this.getLabel('connectionLegend', {count: servers.length})}
-            </DialogContentText>
-            <div style={{ width: '100%', height: 200 }}>
-              <DataGrid
-                columns={serverColumns}
-                rows={servers}
-                rowHeight={40}
-                checkboxSelection
-                hideFooter
-                onSelectionModelChange={this.onConnectionSelectionChange}
-              />
-            </div>
-            <div style={styles.actionBar}>
-              <Button
-                style={styles.addServerBtn}
-                color="primary"
-                onClick={this.onAddServerBtnClick}
-              >{this.getLabel('add')}</Button>
-              <Button
-                disabled={this.isModifyConnectionBtnDisabled()}
-                style={styles.duplicateConnectionBtn}
-                onClick={this.onDuplicateConnectionBtnClick}
-              >{this.getLabel('duplicate')}</Button>
-              <Button
-                disabled={this.isModifyConnectionBtnDisabled()}
-                style={styles.modifyServerBtn}
-                onClick={this.onModifyServerBtnClick}
-              >{this.getLabel('modify')}</Button>
-              <Button
-                disabled={this.isDeleteConnectionBtnDisabled()}
-                style={styles.deleteServerBtn}
-                color="secondary"
-                onClick={this.onDeleteServerBtnClick}
-              >{this.getLabel('delete')}</Button>
-            </div>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              onClick={this.onCancelBtnClick}
-            >{this.getLabel('cancel')}</Button>
-            <Button
-              onClick={this.onSaveBtnClick}
-              variant="contained"
-              color="primary"
-            >{this.getLabel('save')}</Button>
-          </DialogActions>
+            <DialogTitle id="form-dialog-title">{this.getTitle()}</DialogTitle>
+            <DialogContent>
+                <div style={styles.paramContent}>
+                    <div style={styles.groupContent}>  
+                        <DialogContentText>
+                            {this.getLabel('groupLegend', {count: groups.length})}
+                        </DialogContentText>
+                        <DataGrid
+                            columns={groupColumns}
+                            rows={groups}
+                            rowHeight={40}
+                            checkboxSelection
+                            hideFooter
+                            onSelectionModelChange={this.onGroupSelectionChange}
+                        />
+                        <div style={styles.actionBar}>
+                            <Button
+                                style={styles.addGroupBtn}
+                                color="primary"
+                                onClick={this.onAddGroupBtnClick}
+                            >{this.getLabel('add')}</Button>
+                            <Button
+                                disabled={this.isEditGroupBtnDisabled()}
+                                style={styles.duplicateGroupBtn}
+                                onClick={this.onDuplicateGroupBtnClick}
+                            >{this.getLabel('duplicate')}</Button>
+                            <Button
+                                disabled={this.isEditGroupBtnDisabled()}
+                                style={styles.editGroupBtn}
+                                onClick={this.onModifyGroupBtnClick}
+                            >{this.getLabel('edit')}</Button>
+                            <Button
+                                disabled={this.isDeleteGroupBtnDisabled()}
+                                style={styles.deleteGroupBtn}
+                                color="secondary"
+                                onClick={this.onDeleteGroupBtnClick}
+                            >{this.getLabel('delete')}</Button>
+                        </div>
+                    </div>
+                    <div style={styles.connectionContent}>
+                        <DialogContentText>
+                            {this.getConnectionLegend()}
+                        </DialogContentText>
+                        <DataGrid
+                            columns={serverColumns}
+                            rows={servers}
+                            rowHeight={40}
+                            checkboxSelection
+                            hideFooter
+                            onSelectionModelChange={this.onConnectionSelectionChange}
+                        />
+                        <div style={styles.actionBar}>
+                            <Button
+                                style={styles.addServerBtn}
+                                color="primary"
+                                onClick={this.onAddServerBtnClick}
+                            >{this.getLabel('add')}</Button>
+                            <Button
+                                disabled={this.isModifyConnectionBtnDisabled()}
+                                style={styles.duplicateConnectionBtn}
+                                onClick={this.onDuplicateConnectionBtnClick}
+                            >{this.getLabel('duplicate')}</Button>
+                            <Button
+                                disabled={this.isModifyConnectionBtnDisabled()}
+                                style={styles.editServerBtn}
+                                onClick={this.onModifyServerBtnClick}
+                            >{this.getLabel('edit')}</Button>
+                            <Button
+                                disabled={this.isDeleteConnectionBtnDisabled()}
+                                style={styles.deleteServerBtn}
+                                color="secondary"
+                                onClick={this.onDeleteServerBtnClick}
+                            >{this.getLabel('delete')}</Button>
+                        </div>
+                    </div>
+                </div>
+            </DialogContent>
+            <DialogActions>
+                <Button
+                    onClick={this.onCancelBtnClick}
+                >{this.getLabel('cancel')}</Button>
+                <Button
+                    onClick={this.onSaveBtnClick}
+                    variant="contained"
+                    color="primary"
+                >{this.getLabel('save')}</Button>
+            </DialogActions>
         </Dialog>
       </div>
     )

@@ -21,6 +21,10 @@ export default {
     filename: './main.js',
   },
 
+  optimization: {
+    minimize: !DEBUG
+ },
+
   module: {
     rules: [
       {

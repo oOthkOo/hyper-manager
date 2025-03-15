@@ -1,11 +1,11 @@
 {
   "name": "hyper-manager",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "./index.js",
   "scripts": {
-    "start": "npm run build -- --watch --release",
-    "prepublish": "npm run build -- --release",
-    "build": "babel-node ./build/build.js"
+    "start": "NODE_OPTIONS=--openssl-legacy-provider npm run build -- --watch --debug --release",
+    "prepublish": "NODE_OPTIONS=--openssl-legacy-provider npm run build -- --release",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider babel-node ./build/build.js"
   },
   "repository": {
     "type": "git",

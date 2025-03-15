@@ -41,7 +41,7 @@ class Main extends Component {
     this.onServerSave = this.onServerSave.bind(this)
 
     window.rpc.on('manager-open', (options) => {
-      console.log('on:manager-open', options)
+      //console.log('on:manager-open', options)
       this.open(options)
     })
   }
@@ -114,6 +114,11 @@ class Main extends Component {
 
   onGroupDelete(groupIds) {
     var options = _.cloneDeep(this.state.options)
+    _.remove(options.servers, (oServer) => {
+        return _.find(groupIds, (id) => {
+            return oServer.groupId == id
+        })
+    })
     _.remove(options.groups, (oGroup) => {
       return _.find(groupIds, (id) => {
           return oGroup.id == id

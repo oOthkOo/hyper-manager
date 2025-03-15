@@ -1,17 +1,17 @@
 const { resolve: resolvePath } = require('path')
 const MAIN = resolvePath(__dirname, './dist/main.js')
-const Manager = require('./manager')
+const HyperManager = require('./manager')
 
-const manager = new Manager()
+const manager = new HyperManager()
 
 exports.onApp = (app) =>  {
-  manager.loadConfig()
+  manager.loadSettings()
 }
 
 exports.onWindow = (window) =>  {
-  window.rpc.on('manager-save', (options) => {
-    manager.setConfig(options)
-    manager.saveConfig()
+  window.rpc.on('manager-save', (settings) => {
+    manager.setSettings(settings)
+    manager.saveSettings()
   })
 }
 

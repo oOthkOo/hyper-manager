@@ -65,23 +65,24 @@ Here is where this file is found depending on your operating system:
 
  OS | Paths
  --- | ---
- Windows | X:\Users\\{Username}\\.hyper-manager.json
- Linux | /home/{Username}/.hyper-manager.json
- macOS | /Users/{Username}/.hyper-manager.json
+ Windows | `X:\Users\\{Username}\\.hyper-manager.json`
+ Linux | `/home/{Username}/.hyper-manager.json`
+ macOS | `/Users/{Username}/.hyper-manager.json`
 
 #### Default configuration
 
-`HyperManager` saves its own configuration apart from that of Hyper.js. If `HyperManager` does not find a valid configuration file, then it loads an empty configuration:
+`HyperManager` saves its own configuration apart from that of Hyper.js plugins directory. If `HyperManager` does not find a valid configuration file, then it loads an default configuration from `example.json` file and locale `en-US.json` file. This is the default result:
 
 ```json
 {
-  "version": "1.0.0",
+  "version": "1.0.8",
+  "locale": "en-US",
   "labels": {
       "openAll": "Open all",
       "parameters": "Parameters...",
       "add": "Add",
       "duplicate": "Duplicate",
-      "modify": "Modify",
+      "edit": "Edit",
       "delete": "Delete",
       "ok": "Ok",
       "cancel": "Cancel",
@@ -108,9 +109,9 @@ Here is where this file is found depending on your operating system:
       "groupLegend": "You have #count# group(s).",
       "connectionLegend": "You have #count# connection(s).",
       "newGroup": "New group",
-      "modifyGroup": "Modify group",
+      "editGroup": "Edit group",
       "newConnection": "New connection",
-      "modifyConnection": "Modify connection",
+      "editConnection": "Edit connection",
       "confirmation": "Confirmation",
       "deleteGroupConfirm": "Are you sure you want to delete this group (#name#)?",
       "deleteGroupsConfirm": "Are you sure you want to delete #count# groups?",
@@ -132,7 +133,7 @@ Here is where this file is found depending on your operating system:
 
 Internalization
 -----
-In the configurations folder of this repository, you will find translated configuration files for the following locales:
+In the `locales` folder of this repository, you will find translated localization files for the following locales:
 
 Locales | Files
 --- | ---

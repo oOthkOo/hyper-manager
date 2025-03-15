@@ -190,7 +190,7 @@ class ServerDialog extends Component {
 
   getTitle() {
     const { mode } = this.state
-    const name = mode == Modes.Add || mode == Modes.Duplicate ? 'newConnection' : 'modifyConnection'
+    const name = mode == Modes.Add || mode == Modes.Duplicate ? 'newConnection' : 'editConnection'
     return this.getLabel(name)
   }
 
@@ -309,17 +309,19 @@ class ServerDialog extends Component {
               </FormControl>
               <FormControl>
                 <TextField
-                  style={{ width: '270px' }}
-                  type="number"
-                  label={this.getLabel('port')}
-                  value={server.port}
-                  onChange={this.onPortChange}
+                    disabled={server.type == 'cli'}
+                    style={{ width: '270px' }}
+                    type="number"
+                    label={this.getLabel('port')}
+                    value={server.port}
+                    onChange={this.onPortChange}
                 />
               </FormControl>
             </div>
 
             <div style={{ margin: '10px 0px 0px 0px' }}>
               <TextField
+                disabled={server.type == 'cli'}
                 style={{ width: '260px', margin: '0px 20px 0px 0px' }}
                 label={this.getLabel('sshKey')}
                 value={server.key}
