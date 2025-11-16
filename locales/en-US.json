@@ -25,6 +25,8 @@
     "sshKey": "SSH Key",
     "custom": "Custom",
     "customArguments": "Custom arguments",
+    "workingDir": "Working directory",
+    "delay": "Delay (seconds)",
     "launch": "Launch",
     "launchActiveTerm": "Active Term",
     "launchNewTab": "New Tab",

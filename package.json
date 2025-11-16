@@ -1,6 +1,6 @@
 {
   "name": "hyper-manager",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "./index.js",
   "scripts": {
     "start": "NODE_OPTIONS=--openssl-legacy-provider npm run build -- --watch --debug --release",

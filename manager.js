@@ -167,26 +167,58 @@ class HyperManager {
         window.rpc.emit('manager-open', this.getSettings())
     }
 
+    sendCliCommand(window, command) {
+        window.rpc.emit('session data send', {
+            data: command + '\r'
+        })
+    }
+
     openServer(window, server, time) {
         return new Promise((resolve, reject) => {
             const command = this.getServerCommand(server)
             switch (server.launch) {
-            case 'new-tab':
-                window.rpc.emit('termgroup add req')
-                break
-            case 'split-horizontally':
-                window.rpc.emit('split request horizontal')
-                break
-            case 'split-vertically':
-                window.rpc.emit('split request vertical')
-                break
+                case 'new-tab':
+                    window.rpc.emit('termgroup add req')
+                    break
+                case 'split-horizontally':
+                    window.rpc.emit('split request horizontal')
+                    break
+                case 'split-vertically':
+                    window.rpc.emit('split request vertical')
+                    break
             }
+            // Launch server command
             setTimeout(() => {
                 if (command) {
-                    window.rpc.emit('session data send', {
-                        data: command + '\r'
-                    })
+                    // Change working diretory
+                    if (server.workingDir) {
+                        this.sendCliCommand(
+                            window,
+                            `cd ${server.workingDir}`
+                        )
+                    }
+                    // Setting command delay
+                    if (server.delay > 0) {
+                        setTimeout(() => {
+                                this.sendCliCommand(
+                                    window,
+                                    command
+                                )
+                                // Sleep to the next command
+                                setTimeout(resolve, time)
+                            },
+                            server.delay * 1000
+                        )
+                        return
+                    }
+                    else {
+                        this.sendCliCommand(
+                            window,
+                            command
+                        )
+                    }
                 }
+                // Sleep to the next command
                 setTimeout(resolve, time)
             }, 500)
         })

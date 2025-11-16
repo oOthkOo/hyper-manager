@@ -21,6 +21,8 @@
     "sshKey": "Clef SSH",
     "custom": "Custom",
     "customArguments": "Arguments",
+    "workingDir": "Répertoire",
+    "delay": "Délais (secondes)",
     "launch": "Launch",
     "launchActiveTerm": "Active Term",
     "launchNewTab": "New Tab",

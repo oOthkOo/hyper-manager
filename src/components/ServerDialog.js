@@ -31,6 +31,8 @@ class ServerDialog extends Component {
     this.onSaveBtnClick = this.onSaveBtnClick.bind(this)
     this.onNameChange = this.onNameChange.bind(this)
     this.onGroupChange = this.onGroupChange.bind(this)
+    this.onDelayChange = this.onDelayChange.bind(this)
+    this.onWorkingDirChange = this.onWorkingDirChange.bind(this)
     this.onAcceleratorChange = this.onAcceleratorChange.bind(this)
     this.onUserChange = this.onUserChange.bind(this)
     this.onHostChange = this.onHostChange.bind(this)
@@ -92,6 +94,22 @@ class ServerDialog extends Component {
     this.setState({
       server: Object.assign(this.state.server, {
         legend: e.target.value
+      })
+    })
+  }
+
+  onDelayChange(e) {
+    this.setState({
+      server: Object.assign(this.state.server, {
+        delay: e.target.value
+      })
+    })
+  }
+
+  onWorkingDirChange(e) {
+    this.setState({
+      server: Object.assign(this.state.server, {
+        workingDir: e.target.value
       })
     })
   }
@@ -265,6 +283,22 @@ class ServerDialog extends Component {
                   <MenuItem value={Launches.SplitVertically}>{this.getLabel('launchSplitVertically')}</MenuItem>
                 </Select>
               </FormControl>
+            </div>
+
+            <div style={{ margin: '10px 0px 0px 0px' }}>
+              <TextField
+                style={{ width: '260px', margin: '0px 20px 0px 0px' }}
+                label={this.getLabel('workingDir')}
+                value={server.workingDir}
+                onChange={this.onWorkingDirChange}
+              />
+              <TextField
+                type="number"
+                style={{ width: '270px' }}
+                label={this.getLabel('delay')}
+                value={server.delay}
+                onChange={this.onDelayChange}
+              />
             </div>
 
             <div style={{ margin: '10px 0px 0px 0px' }}>

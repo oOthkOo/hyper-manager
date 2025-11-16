@@ -28,6 +28,8 @@ Features
  * Modify all connection's parameters
  * Delete connections alone or by batch
  * Specify by connection how (new tab, split term etc..) launch connections
+ * Specify delays between connections (it's magic for scenarios)
+ * Change working diretory for all connections
  * Manage a lot of connections in one place easily
  * Builtin Internalization in configuration
  * Load/Save your connections and groups from/to your personal JSON file
@@ -75,7 +77,7 @@ Here is where this file is found depending on your operating system:
 
 ```json
 {
-  "version": "1.0.8",
+  "version": "1.0.9",
   "locale": "en-US",
   "labels": {
       "openAll": "Open all",
@@ -101,6 +103,8 @@ Here is where this file is found depending on your operating system:
       "sshKey": "SSH Key",
       "custom": "Custom",
       "customArguments": "Custom arguments",
+      "workingDir": "Working directory",
+      "delay": "Delay (seconds)",
       "launch": "Launch",
       "launchActiveTerm": "Active Term",
       "launchNewTab": "New Tab",

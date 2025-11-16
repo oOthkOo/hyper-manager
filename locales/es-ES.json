@@ -25,6 +25,8 @@
     "sshKey": "Clave SSH",
     "custom": "Personalizado",
     "customArguments": "Argumentos personalizados",
+    "workingDir": "Directorio de trabajo",
+    "delay": "Retardo (segundos)",
     "launch": "Lanzamiento",
     "launchActiveTerm": "Terminal Activo",
     "launchNewTab": "Nueva Pestaña",
